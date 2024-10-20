@@ -1,0 +1,68 @@
+.container-form-relatorio-clientes-aniversario {
+    margin-top: 50px;
+    width: 290px;
+    height: 120px;
+    padding: 20px;
+    border: 1px solid;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-form-campos-relatorio-clientes-aniversario {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-input-form-relatorio-clientes-aniversario {
+    display: flex;
+    flex-direction: column;
+    padding: 7px 10px;
+}
+
+.label-form-relatorio-clientes-aniversario {
+    font-size: 20px;
+}
+
+.input-form-relatorio-clientes-aniversario {
+    padding: 0 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 18px;
+}
+
+.container-form-button-relatorio-clientes-aniversario {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.button-form-relatorio-clientes-aniversario {
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 6px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #2c73d2;
+    color: white;
+    height: 30px;
+    width: 80px;
+    font-size: 16px;
+}
+
+.button-form-relatorio-clientes-aniversario:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}

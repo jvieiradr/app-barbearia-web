@@ -1,0 +1,115 @@
+.container-form-mala {
+    margin-top: 20px;
+    height: 192px;
+    padding: 10px;
+    border: 1px solid;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 5px;
+    display: flex;
+}
+
+.container-form-campos-mala {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.div-label-input-form-mala {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label-form-mala {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.input-form-mala {
+    padding-left: 5px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    height: 30px;
+    font-size: 18px;
+}
+
+.textarea-form-mala {
+    padding: 5px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    width: 485px;
+    height: 150px;
+    font-size: 18px;
+}
+
+.container-form-button-mala {
+    width: 99%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.button-form-mala {
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #2c73d2;
+    color: white;
+    height: 30px;
+    width: 80px;
+    font-size: 16px;
+}
+
+.container-notificacoes-mala {
+    margin-top: 5px;
+    height: 30px;
+    border: 1px solid;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.container-grid-mala {
+    margin-top: 20px;
+    width: 784px;
+    height: 360px;
+    border: 1px solid;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.grid-table-mala {
+    background-color: #fff;
+    width: 750px;
+    margin: 10px auto;
+    font-size: 18px;
+}
+
+.grid-table-th-mala {
+    text-align: start;
+    height: 22px;
+    border-bottom: inset;
+}
+
+.grid-table-td-mala {
+    text-align: start;
+}
+
+.grid-table-checkbox-mala {
+    width: 20px;
+    height: 15px;
+}
