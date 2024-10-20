@@ -11,7 +11,7 @@ const Menu = () => {
       <>
       <div className='container-principal'>
         <div className='container-logo'>
-          <img src='../logo.jpg' className='logo' />
+          <img src='logo.jpg' className='logo' />
         </div>
           <div className="container-menu">
               <button className="button-menu" onClick={() => irPara('/clientes')}>Clientes</button>
