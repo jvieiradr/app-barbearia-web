@@ -7,6 +7,7 @@ import axios from 'axios';
 import '../../Basico.css';
 import './RelatorioCortesData.css';
 
+const baseURL = 'https://api-barbearia-web.vercel.app';
 var doc = '';
 var cortes = [];
 var valorTotalCortes = 0;
@@ -28,13 +29,11 @@ const relatorioCortesData = () => {
     }, []);
 
     const buscarCortes = async (dtInicial, dtFinal) => {
-        const baseURL = 'http://localhost:8080';
-
         await axios.get(baseURL + '/relatoriocortesdata/' + dtInicial + '/' + dtFinal)
             .then((resposta) => {
                 cortes = resposta.data;
             })
-            .catch(() => alert('Erro ao Listar os Cortes'));
+            .catch((erro) => alert('Erro ao Listar os Cortes'));
         gerarRelatorio();    
     };
 
@@ -55,7 +54,7 @@ const relatorioCortesData = () => {
             doc.setFontSize(14);
             doc.text('Nº', 15, 40);
             doc.text('Nome do Cliente', 40, 40);
-            doc.text('Data do Corte', 200, 40);
+            doc.text('Data do Corte', 275, 40);
             doc.text('Valor', 400, 40);
             doc.setFontSize(12);
             doc.setFont('Courier', 'normal');
@@ -85,9 +84,9 @@ const relatorioCortesData = () => {
             while (numeroCortePagina <= quantidadeCortesPagina) {
                 if (indice < quantidadeCortesTotal) {
                     doc.text(String(indice + 1).padStart(2, ' '), 14, numeroLinha);
-                    doc.text(cortes[indice].nomeCliente.slice(0, 40), 40, numeroLinha);
-                    doc.text(cortes[indice].data_formatada, 200, numeroLinha);
-                    doc.text(cortes[indice].valor.padStart(10, ' '), 378, numeroLinha);
+                    doc.text(cortes[indice].nomecliente.slice(0, 40), 40, numeroLinha);
+                    doc.text(cortes[indice].data_formatada, 275, numeroLinha);
+                    doc.text(cortes[indice].valor.padStart(10, ' '), 388, numeroLinha);
                     valorTotalCortes = valorTotalCortes + transInteiro(cortes[indice].valor);
                     indice++;
                     numeroLinha = numeroLinha + 10;
@@ -103,7 +102,6 @@ const relatorioCortesData = () => {
             numeroPagina++;
             numeroLinha = 53;
             numeroCortePagina = 1;
-            console.log(numeroPagina)
     
             if (numeroPagina <= quantidadePaginas) {
                 doc.addPage()

@@ -9,10 +9,11 @@ import '../../Basico.css';
 import './RelatorioClientesAniversario.css';
 
 var doc = '';
+const baseURL = 'https://api-barbearia-web.vercel.app';
 
 const relatorioClientesAniversario = () => {
     const irPara = useNavigate();
-    const [meses, setMeses] = useState([
+    const [meses] = useState([
         {value: 1, label: 'Janeiro'},
         {value: 2, label: 'Fevereiro'},
         {value: 3, label: 'Março'},
@@ -31,6 +32,7 @@ const relatorioClientesAniversario = () => {
 
     const limparCampos = () => {
         setMesSelecionado(null);
+        setClientesAniversariantes([]);
         document.getElementById('botaoGerarRelatorio').disabled = true;
     };
 
@@ -40,7 +42,6 @@ const relatorioClientesAniversario = () => {
 
     const handleChange = async (mesSelecionado) => {
         setMesSelecionado(mesSelecionado);
-        const baseURL = 'http://localhost:8080';
 
         await axios.get(baseURL + '/buscarclientesaniversariantes/' + mesSelecionado.value)
             .then((resposta) => {
@@ -69,7 +70,7 @@ const relatorioClientesAniversario = () => {
             doc.setFontSize(14);
             doc.text('Nº', 15, 40);
             doc.text('Nome do Cliente', 40, 40);
-            doc.text('Data de Nascimento', 190, 40);
+            doc.text('DT Nascimento', 235, 40);
             doc.text('Telefone', 340, 40);
             doc.setFontSize(12);
             doc.setFont('Courier', 'normal');
@@ -100,7 +101,7 @@ const relatorioClientesAniversario = () => {
                 if (indice < quantidadeTotal) {
                     doc.text(String(indice + 1).padStart(2, ' '), 14, numeroLinha);
                     doc.text(clientesAniversariantes[indice].nome.slice(0, 40), 40, numeroLinha);
-                    doc.text(desinverteData(clientesAniversariantes[indice].dtNascimento), 190, numeroLinha);
+                    doc.text(desinverteData(clientesAniversariantes[indice].dtnascimento), 235, numeroLinha);
                     doc.text(clientesAniversariantes[indice].telefone, 340, numeroLinha);
                     indice++;
                     numeroLinha = numeroLinha + 10;

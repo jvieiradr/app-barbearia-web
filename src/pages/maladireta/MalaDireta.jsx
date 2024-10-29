@@ -5,7 +5,8 @@ import axios from 'axios';
 import '../../Basico.css';
 import './MalaDireta.css';
 
-const baseURL = 'http://localhost:8080';
+const baseURL = 'https://api-barbearia-web.vercel.app';
+
 var clientesSelecionados = [];
 
 const malaDireta = () => {
@@ -18,7 +19,6 @@ const malaDireta = () => {
                 setClientes(resposta.data);
             })
             .catch((erro) => {
-    
             });
     };
 
@@ -72,7 +72,7 @@ const malaDireta = () => {
             destinatario: clientesSelecionados
         };
 
-        await axios.post(baseURL + '/enviar', dadosEmail)
+        await axios.post(baseURL + '/enviarmala', dadosEmail)
             .then(() => {
                 document.getElementById('notificacoes').innerHTML = '<label style="color: green">!!! E-Mails Enviados com Sucesso !!!</label>';
                 setTimeout(() => {document.getElementById('notificacoes').innerHTML = ''}, 3000);

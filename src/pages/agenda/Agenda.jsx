@@ -4,7 +4,7 @@ import { formataDataInvertida, desinverteData } from '../../Utils';
 import axios from 'axios';
 
 import './Agenda.css';
-const baseURL = 'http://localhost:8080';
+const baseURL = 'https://api-barbearia-web.vercel.app';
 
 const Agenda = () => {
     const [compromissos, setCompromissos] = useState([]);
@@ -25,7 +25,7 @@ const Agenda = () => {
 
     const listarCompromissos = async () => {
         const data = document.getElementById('data').value;
-        await axios.get(baseURL + '/listar-compromissos/' + data)
+        await axios.get(baseURL + '/listarcompromissos/' + data)
             .then((resposta) => {
                 setCompromissos(resposta.data);
             })
@@ -69,7 +69,7 @@ const Agenda = () => {
              return;
          };
 
-        await axios.post(baseURL + '/cadastrar-compromisso', compromisso)
+        await axios.post(baseURL + '/cadastrarcompromisso', compromisso)
             .then(() => {
                 document.getElementById('notificacoes').innerHTML = '<label style="color: green">!!! Compromisso Cadastrado com Sucesso !!!</label>';
                 setTimeout(() => {document.getElementById('notificacoes').innerHTML = ''}, 3000);
@@ -95,7 +95,7 @@ const Agenda = () => {
              return;
          };
 
-        await axios.put(baseURL + '/alterar-compromisso', compromissoEditado).
+        await axios.put(baseURL + '/alterarcompromisso', compromissoEditado).
             then((resposta) => {
                 document.getElementById('notificacoes').innerHTML = '<label style="color: green">!!! Compromisso Alterado com Sucesso !!!</label>';
                 setTimeout(() => {document.getElementById('notificacoes').innerHTML = ''}, 3000);
@@ -108,7 +108,7 @@ const Agenda = () => {
     };
 
     const excluirCompromisso = async () => {
-        await axios.delete(baseURL + '/deletar-compromisso/' + idCompromisso)
+        await axios.delete(baseURL + '/deletarcompromisso/' + idCompromisso)
             .then(() => {
                 document.getElementById('notificacoes').innerHTML = '<label style="color: green">!!! Compromisso Excluido com Sucesso !!!</label>';
                 setTimeout(() => document.getElementById('notificacoes').innerHTML = '', 3000);
@@ -119,7 +119,6 @@ const Agenda = () => {
             });
         limparCampos();    
     };
-
 
     const abrirModal = (id) => {
         setIdCompromisso(id);

@@ -5,11 +5,10 @@ import '../../Basico.css';
 import './RelatorioGeralClientes.css';
 
 var doc = '';
+const baseURL = 'https://api-barbearia-web.vercel.app';
 
 export const relatorioGeralClientes = () => {
     const buscarClientes = async () => {
-        const baseURL = 'http://localhost:8080';
-
         await axios.get(baseURL + '/buscarclientes')
             .then((resposta) => {
                 gerarRelatorio(resposta.data);

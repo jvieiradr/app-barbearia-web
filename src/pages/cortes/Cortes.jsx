@@ -6,7 +6,7 @@ import Select from 'react-select';
 import '../../Basico.css';
 import './Cortes.css';
 
-const baseURL = 'http://localhost:8080'
+const baseURL = 'https://api-barbearia-web.vercel.app'
 
 const Cortes = () => {
     const irPara = useNavigate();
@@ -31,7 +31,7 @@ const Cortes = () => {
                 setTimeout(() => {document.getElementById('notificacoes').innerHTML = ''}, 2000);
             });
         document.getElementById('telefone').value = clienteSelecionado.telefone;
-        document.getElementById('tipo-corte').value = clienteSelecionado.preferenciaCorte;
+        document.getElementById('tipo-corte').value = clienteSelecionado.preferenciacorte;
         document.getElementById('dt-corte').focus();
     };
 
@@ -51,7 +51,7 @@ const Cortes = () => {
 
         await axios.get(baseURL + '/buscarclientes')
             .then((resposta) => {
-                setClientes(resposta.data)
+                setClientes(resposta.data);
             })
             .catch((erro) => {
                 document.getElementById('notificacoes').innerHTML = `<label style="color: red">Erro ao Listar os Clientes: ${erro} </label>`;
@@ -69,12 +69,12 @@ const Cortes = () => {
         };
 
         const novoCorte = {
-            idCliente: clienteSelecionado.value,
-            nomeCliente: clienteSelecionado.label,
-            telefoneCliente: clienteSelecionado.telefone,
-            dtCorte: document.getElementById('dt-corte').value,
+            idcliente: clienteSelecionado.value,
+            nomecliente: clienteSelecionado.label,
+            telefonecliente: clienteSelecionado.telefone,
+            dtcorte: document.getElementById('dt-corte').value,
             valor: document.getElementById('valor').value,
-            tipoCorte: document.getElementById('tipo-corte').value
+            tipocorte: document.getElementById('tipo-corte').value
         }
 
         await axios.post(baseURL + '/cadastrarcorte', novoCorte)
@@ -91,10 +91,10 @@ const Cortes = () => {
 
     const alterarCorte = async () => {
         const corteAlterado = {
-            dtCorte: document.getElementById('dt-corte').value,
+            dtcorte: document.getElementById('dt-corte').value,
             valor: document.getElementById('valor').value,
-            tipoCorte: document.getElementById('tipo-corte').value,
-            idCorte: idCorte
+            tipocorte: document.getElementById('tipo-corte').value,
+            idcorte: idCorte
         };
 
         await axios.put(baseURL + '/alterarcorte', corteAlterado)
@@ -110,9 +110,9 @@ const Cortes = () => {
     };
 
     const preencherCampos = (corte) => {
-        document.getElementById('dt-corte').value = corte.dtCorte.substring(0, 10);
+        document.getElementById('dt-corte').value = corte.dtcorte.substring(0, 10);
         document.getElementById('valor').value = corte.valor;
-        document.getElementById('tipo-corte').value = corte.tipoCorte;
+        document.getElementById('tipo-corte').value = corte.tipocorte;
         setIdCorte(corte.id);
         setOnEdit(true);
         window.scrollTo(0, 0);
@@ -126,8 +126,8 @@ const Cortes = () => {
         };
     };
 
-    const excluirCorte = async (idCorte) => {
-        axios.delete(baseURL + '/deletarcorte/' + idCorte)
+    const excluirCorte = async (idcorte) => {
+        axios.delete(baseURL + '/deletarcorte/' + idcorte)
         .then(() => {
             document.getElementById('notificacoes').innerHTML = '<label style="color: green">!!! Corte Excluido com Sucesso !!!</label>';
             setTimeout(() => document.getElementById('notificacoes').innerHTML = '', 2000);
@@ -217,9 +217,9 @@ const Cortes = () => {
                     <tbody>
                         {cortes.map((corte, i) => (
                             <tr key={i}>
-                                <td className='grid-cortes-table-td' width="17%">{desinverteData(corte.dtCorte.substring(10, 0))}</td>
+                                <td className='grid-cortes-table-td' width="17%">{desinverteData(corte.dtcorte.substring(10, 0))}</td>
                                 <td className='grid-cortes-table-td' width="15%">{corte.valor}</td>
-                                <td className='grid-cortes-table-td' width="70%">{corte.tipoCorte}</td>
+                                <td className='grid-cortes-table-td' width="70%">{corte.tipocorte}</td>
                                 <td ><button className='grid-cortes-table-button' onClick={() => preencherCampos(corte)}>Detalhar</button></td>
                                 <td ><button className='grid-cortes-table-button' onClick={() => abrirModal(corte.id)}>Excluir</button></td>
                             </tr>

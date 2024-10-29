@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../../Basico.css';
 import './Clientes.css';
 
-const baseURL = 'http://localhost:8080'
+const baseURL = 'https://api-barbearia-web.vercel.app'
 
 const Clientes = () => {
     const irPara = useNavigate();
@@ -56,8 +56,8 @@ const Clientes = () => {
         document.getElementById('bairro').value = cliente.bairro;
         document.getElementById('cidade').value = cliente.cidade;
         document.getElementById('email').value = cliente.email;
-        document.getElementById('dt-nascimento').value = cliente.dtNascimento.substring(10, 0);
-        document.getElementById('preferencia-corte').value = cliente.preferenciaCorte;
+        document.getElementById('dt-nascimento').value = cliente.dtnascimento.substring(10, 0);
+        document.getElementById('preferencia-corte').value = cliente.preferenciacorte;
         setIdCliente(cliente.id);
         setOnEdit(true);
         window.scrollTo(0, 0);
@@ -81,8 +81,8 @@ const Clientes = () => {
             bairro: document.getElementById('bairro').value,
             cidade: document.getElementById('cidade').value,
             email: document.getElementById('email').value,
-            dtNascimento: document.getElementById('dt-nascimento').value,
-            preferenciaCorte: document.getElementById('preferencia-corte').value
+            dtnascimento: document.getElementById('dt-nascimento').value,
+            preferenciacorte: document.getElementById('preferencia-corte').value
         };
 
         if(!novoCliente.nome ||
@@ -98,6 +98,7 @@ const Clientes = () => {
                 setTimeout(() => {document.getElementById('notificacoes').innerHTML = ''}, 3000);
             }).
             catch((erro) => {
+                console.log(erro);
                 document.getElementById('notificacoes').innerHTML = '<label style="color: red">Erro ao Cadastrar o Cliente</label>';
                 setTimeout(() => {document.getElementById('notificacoes').innerHTML = ''}, 3000);
             });
@@ -114,8 +115,8 @@ const Clientes = () => {
             bairro: document.getElementById('bairro').value,
             cidade: document.getElementById('cidade').value,
             email: document.getElementById('email').value,
-            dtNascimento: document.getElementById('dt-nascimento').value,
-            preferenciaCorte: document.getElementById('preferencia-corte').value,
+            dtnascimento: document.getElementById('dt-nascimento').value,
+            preferenciacorte: document.getElementById('preferencia-corte').value,
             id: idCliente
         };
 
