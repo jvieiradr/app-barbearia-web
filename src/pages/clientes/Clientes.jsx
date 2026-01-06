@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../../Basico.css';
 import './Clientes.css';
 
-const baseURL = 'https://api-barbearia-web.vercel.app'
+const baseURL = 'http://localhost:8800'
 
 const Clientes = () => {
     const irPara = useNavigate();
